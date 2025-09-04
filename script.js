@@ -32,11 +32,15 @@ const display = document.querySelector('.display');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        if (button.textContent === '=' && display.textContent !== '0') {
-            let [x, operator, y] = display.textContent.split(' ');
-            display.textContent = operate(operator, x, y);
-        } else if ('+-*/='.includes(button.textContent) && display.textContent !== '0') {
-            display.textContent += ` ${button.textContent} `;
+        if (button.textContent === '=') {
+            if (display.textContent !== '0') {
+                let [x, operator, y] = display.textContent.split(' ');
+                display.textContent = operate(operator, x, y);
+            }
+        } else if ('+-*/='.includes(button.textContent)) {
+            if (display.textContent !== '0') {
+                display.textContent += ` ${button.textContent} `;
+            }
         } else if (display.textContent === '0') {
             display.textContent = button.textContent;
         } else {
