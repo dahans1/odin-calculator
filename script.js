@@ -19,16 +19,22 @@ function divide(x, y) {
 }
 
 function operate(operator, x, y) {
+    let result = 0;
     switch (operator) {
         case '+':
-            return add(x, y);
+            result = add(x, y);
+            break;
         case '-':
-            return subtract(x, y);
+            result = subtract(x, y);
+            break;
         case '*':
-            return multiply(x, y);
+            result = multiply(x, y);
+            break;
         case '/':
-            return Math.floor(divide(x, y));
+            result = divide(x, y);
+            break;
     }
+    return Number.parseFloat(result.toFixed(5));
 }
 
 const buttons = document.querySelectorAll('button');
@@ -57,7 +63,7 @@ buttons.forEach(button => {
                 display.textContent = operate(operator, x, y);
             }
             display.textContent += ` ${button.textContent} `;
-        } else if (display.textContent === '0') {
+        } else if (!hasNumber(display)) {
             display.textContent = button.textContent;
         } else {
             display.textContent += button.textContent;
