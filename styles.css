@@ -25,3 +25,9 @@ button {
 #divide, #equal {
     flex: 0;
 }
+
+#clear {
+    color: red;
+    font-weight: bolder;
+    background-color: whitesmoke;
+}

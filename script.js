@@ -30,15 +30,29 @@ function operate(operator, x, y) {
 const buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
+function hasNumber(div) {
+    return div.textContent !== '0';
+}
+
+function hasOperand(div) {
+    return div.textContent.includes(' ');
+}
+
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        if (button.textContent === '=') {
-            if (display.textContent !== '0') {
+        if (button.id === 'clear') {
+            display.textContent = '0';
+        } else if (button.textContent === '=') {
+            if (hasNumber(display) && hasOperand(display)) {
                 let [x, operator, y] = display.textContent.split(' ');
                 display.textContent = operate(operator, x, y);
             }
-        } else if ('+-*/='.includes(button.textContent)) {
-            if (display.textContent !== '0') {
+        } else if ('+-*/'.includes(button.textContent)) {
+            if (hasOperand(display)) {
+                let [x, operator, y] = display.textContent.split(' ');
+                display.textContent = operate(operator, x, y);
+            }
+            if (hasNumber(display)) {
                 display.textContent += ` ${button.textContent} `;
             }
         } else if (display.textContent === '0') {
