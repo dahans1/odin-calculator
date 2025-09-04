@@ -11,6 +11,10 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
+    if (+y == 0) {
+        alert('Err: cannot divide by 0!');
+        return 0;
+    }
     return +x / +y;
 }
 
@@ -52,9 +56,7 @@ buttons.forEach(button => {
                 let [x, operator, y] = display.textContent.split(' ');
                 display.textContent = operate(operator, x, y);
             }
-            if (hasNumber(display)) {
-                display.textContent += ` ${button.textContent} `;
-            }
+            display.textContent += ` ${button.textContent} `;
         } else if (display.textContent === '0') {
             display.textContent = button.textContent;
         } else {
