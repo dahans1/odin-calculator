@@ -23,7 +23,7 @@ function operate(operator, x, y) {
         case '*':
             return multiply(x, y);
         case '/':
-            return divide(x, y);
+            return Math.floor(divide(x, y));
     }
 }
 
