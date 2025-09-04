@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 150px;
+}
+
+.display {
+    font-size: xx-large;
+}
+
+button {
+    padding: 25px;
+    border-radius: 8px;
+    background-color: beige;
+}
