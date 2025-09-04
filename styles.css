@@ -6,15 +6,22 @@ body {
 }
 
 .display {
-    font-size: xx-large;
+    font-size: 50px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
+    width: 240px;
 }
 
 button {
+    flex: 1;
     padding: 25px;
     border-radius: 8px;
     background-color: beige;
 }
 
-#zero {
-    padding: 25px 90px;
+#divide, #equal {
+    flex: 0;
 }
