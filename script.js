@@ -1,17 +1,17 @@
 function add(x, y) {
-    return x + y;
+    return +x + +y;
 }
 
 function subtract(x, y) {
-    return x - y;
+    return +x - +y;
 }
 
 function multiply(x, y) {
-    return x * y;
+    return +x * +y;
 }
 
 function divide(x, y) {
-    return x / y;
+    return +x / +y;
 }
 
 function operate(operator, x, y) {
@@ -36,21 +36,30 @@ let onFirst = true;
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        if (display.textContent == '0') {
-            display.textContent = '';
-        }
-        
-        if ('+-*/'.includes(button.textContent)) {
-            operator += button.textContent;
-            onFirst = false;
-            display.textContent += ` ${operator} `;
-        } else if (!onFirst) {
-            y += button.textContent;
-            display.textContent += button.textContent;
+        if (button.textContent === '=') {
+            if (x && operator && y) {
+                display.textContent = operate(operator, x, y);
+                x = display.textContent;
+                operator = '';
+                y = '';
+            }
         } else {
-            x += button.textContent;
-            display.textContent += button.textContent;
+            if (display.textContent === '0') {
+                display.textContent = '';
+            }
+
+            if ('+-*/'.includes(button.textContent)) {
+                operator += button.textContent;
+                onFirst = false;
+                display.textContent += ` ${operator} `;
+            } else if (!onFirst) {
+                y += button.textContent;
+                display.textContent += button.textContent;
+            } else {
+                x += button.textContent;
+                display.textContent += button.textContent;
+            }
+            console.log(`${x} ${operator} ${y} = ?`);
         }
-        console.log(`${x} ${operator} ${y} = ?`);
     });
 });
